@@ -1,10 +1,11 @@
 nav{
-    width: 100%;
+    max-width: 100%;
     height: 80px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    position: relative;
     box-shadow: 0 0 15px 3px rgba(0,0,0,.5);
+    z-index: 200;
 }
 
 .container{
@@ -65,4 +66,23 @@ ul li a.active{
 
 ul li a.active:hover{
     background-color: #ef233c;
+}
+
+@media screen and (max-width: 450px) {
+    ul li{
+        margin: 0 -5px;
+    }
+
+    nav .container span{
+        font-size: 20px;
+    }
+
+    ul li a{
+        font-size: 15px;
+    }
+
+    ul li a.active{
+        width: 85px;
+        height: 50px;
+    }
 }
