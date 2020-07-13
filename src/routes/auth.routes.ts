@@ -2,23 +2,24 @@ import { Router } from 'express'
 
 import passport from 'passport';
 
+import auth from '../middleware/auth';
 
 import authCtr from '../controllers/auth.controller';
 
 const router = Router();
 
-router.get('/signup', authCtr.getSignup);
+router.get('/signup',auth.isNotLoggedIn,  authCtr.getSignup);
 
-router.get('/login', authCtr.getLogin);
+router.get('/login', auth.isNotLoggedIn,  authCtr.getLogin);
 
 //register
-router.post('/signup', passport.authenticate('signup', {
+router.post('/signup',auth.isNotLoggedIn,  passport.authenticate('signup', {
     failureRedirect: '/signup',
-    successRedirect: '/profile',
+    successRedirect: '/add',
     failureFlash: true
 }));
 
-router.post('/login', (req, res, next) => {
+router.post('/login',auth.isNotLoggedIn,  (req, res, next) => {
     passport.authenticate('login', {
         successRedirect: '/profile',
         failureRedirect: '/login',

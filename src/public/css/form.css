@@ -99,13 +99,6 @@ form button {
     cursor: pointer;
 }
 
-.btn-google i{
-    font-size: 1em;
-}
-
-.btn-google{
-    background: #4285f4;
-}
 
 @media screen and (max-width: 500px) {
     form {

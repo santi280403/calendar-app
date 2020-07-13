@@ -1,0 +1,32 @@
+<nav>
+    <div class="container">
+        <div class="bar" id="open_btn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <span>
+            Calendar
+        </span>
+    </div>
+</nav>
+
+<div class="side-nav" id="nav">
+    <div class="times" id="close_btn">
+        <i class="fas fa-times"></i>
+    </div>
+    <header class="avatar">
+        <img src={{result.imageURL}} class="img-avatar">
+        <h2>{{user.username}}</h2>
+        <p>{{user.email}}</p>
+    </header>
+    <ul>
+        <li>
+            <a href="/calendar">Calendar</a>
+        </li>
+        <li>
+            <a href="/profile">Profile</a>
+        </li>
+        <li>
+            <a href="/logout">Logout</a>
+        </li>
+    </ul>
+</div>

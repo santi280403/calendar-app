@@ -1,0 +1,143 @@
+.add-photo{
+    display: flex;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 70vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.add-photo .box-photo{
+    background-color: #fff;
+    flex-basis: 850px;
+    max-width: 850px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    padding: 30px;
+    display: flex;
+}
+
+.add-photo .box-photo .img{
+    flex-basis: 50%;
+    max-width: 50%;
+}
+
+.add-photo .box-photo .img img{
+    display: block;
+    width: 100%;
+}
+
+.add-photo .box-photo .form-photo {
+    flex-basis: 50%;
+    max-width: 50%;
+    padding-left: 30px;
+}
+
+.add-photo .box-photo .form-photo h3 {
+    text-transform: uppercase;
+    color: #444;
+    font-size: 30px;
+    margin: 20px 0 40px;
+    border-bottom: 1px solid #ff5722;
+    padding-bottom: 5px;
+}
+
+.add-photo .box-photo .form-photo .form-heading,
+.add-photo .box-photo .form-photo form {
+    width: 100%;
+}
+
+.add-photo .box-photo .form-photo .div-group{
+    position: relative;
+    margin: 25px;
+}
+
+.add-photo .box-photo .form-photo .div-group input{
+    background: none;
+    color: #c6c6c6;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #49454567;
+    outline: none;
+    transition: border-bottom .5s;
+}
+
+.add-photo .box-photo .form-photo .div-group input:focus{
+    color: rgb(71,71,71);
+    border-bottom: 1px solid #ff5722;
+}
+
+.add-photo .box-photo .form-photo form p.add-file {
+    color: #fff;
+    text-align: center;
+}
+
+label {
+    color: #49454567;
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    pointer-events: none;
+    transition: .5s ease-in-out all;
+}
+
+input:focus~label, input:valid~label {
+    top: -14px;
+    font-size: 12px;
+    color: #ff5722;
+}
+
+.add-photo .box-photo .form-photo form .div-file {
+    display: block;
+    position: relative;
+    padding: 10px;
+    width: 150px;
+    background-color: #2499e3;
+    margin: 25px;
+    border-radius: 7px;
+    box-shadow: 0 3px 0 #1a71a9;
+    transition: background-color .5s ease;
+}
+
+.add-photo .box-photo .form-photo form .div-file:hover {
+    background-color: #1a71a9;
+    box-shadow: 0 3px 0 #238bcc;
+}
+
+.add-photo .box-photo .form-photo form input.btn-file {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.add-photo .box-photo .form-photo form .btn-send {
+    margin-left: 25px;
+    display: block;
+    height: 45px;
+    background-color: #ff5722;
+    color: #fff;
+    padding: 0 40px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid #e13c08;
+    border-radius: 50px;
+    transition: background-color .5s ease;
+}
+
+.add-photo .box-photo .form-photo form .btn-send:hover {
+    background-color: transparent;
+    color: #000;
+}

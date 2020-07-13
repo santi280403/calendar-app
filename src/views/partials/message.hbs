@@ -1,0 +1,55 @@
+{{#if danger}}
+<div class="alert-wrapper">
+    <div class="alert_backdrop"></div>
+    <div class="alert_inner">
+        <div class="alert_item alert_danger">
+            <div class="icon data_icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="data">
+                <p class="title"><span>Info:</span> {{danger}}</p>
+            </div>
+            <div class="icon close">
+                <div class="fas fa-times"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const alert_item = document.querySelector('.alert_item');
+    const close_alert = document.querySelector('.close');
+    const alert_wrapper = document.querySelector('.alert-wrapper');
+
+    close_alert.addEventListener('click', () => {
+        alert_wrapper.classList.add('hide')
+        alert_item.style.top = '-1000%';
+    });
+</script>
+{{/if}}
+
+{{#if success}}
+<div class="alert">
+    <i class="fas fa-check-circle"></i>
+    <span class="msg">{{success}}</span>
+    <div class="close-alert">
+        <i class="fas fa-times"></i>
+    </div>
+</div>
+
+<script>
+    //Messages
+    const alert = document.querySelector('.alert');
+    const closeAlert = document.querySelector('.close-alert');
+
+    closeAlert.addEventListener('click', () => {
+        alert.classList.remove('show');
+        alert.classList.add('hide');
+    });
+
+    setTimeout(() => {
+        alert.classList.remove('show');
+        alert.classList.add('hide');
+    }, 5000);
+</script>
+{{/if}}

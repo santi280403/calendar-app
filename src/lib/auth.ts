@@ -27,19 +27,19 @@ passport.use('signup', new LocalStrategy({
     const userName: any = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
     //exists username
     if (userName.length > 0) {
-        return done(null, false, req.flash('message', 'The username is already exist'));
+        return done(null, false, req.flash('danger', 'The username is already exist'));
     }
     //exists email
     if (emailUSer.length > 0) {
-        return done(null, false, req.flash('message', 'The email is already exist'));
+        return done(null, false, req.flash('danger', 'The email is already exist'));
     }
     //fill all the files
     if (!username || !email || !password || !passc) {
-        return done(null, false, req.flash('message', 'Fill the camps'))
+        return done(null, false, req.flash('danger', 'Fill the camps'))
     }
     //password match
     if (password !== passc) {
-        return done(null, false, req.flash('message', "The passwords don't match"))
+        return done(null, false, req.flash('danger', "The passwords don't match"))
     }
 
     console.log(req.body);
@@ -81,10 +81,10 @@ passport.use('login', new LocalStrategy({
         if (validPassword) {
             done(null, user, req.flash('success', 'Welcome' + user.username))   
         } else {
-            done(null, false, req.flash('message', 'Password Incorrect'));
+            done(null, false, req.flash('danger', 'Password Incorrect'));
         }
     } else {
-        return done(null, false, req.flash('message', "The email don't exist"));
+        return done(null, false, req.flash('danger', "The email don't exist"));
     }
 
 }));

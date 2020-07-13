@@ -5,6 +5,7 @@ class AuthRoutes {
     getSignup(req: Request, res: Response) {
 
         res.render('forms/register');
+        console.log(req.isAuthenticated());
 
     }
 

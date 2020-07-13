@@ -6,6 +6,7 @@ import passport from 'passport';
 import flash from 'connect-flash';
 import session from 'express-session';
 const MySQLStore = require('express-mysql-session')(session)
+import multer from 'multer';
 
 //keys
 import keys from './config/keys';
@@ -27,9 +28,9 @@ export class App {
 
         this.settings();
         this.middlewares();
+        this.globalVariables();
         this.routes();
         this.statics();
-        this.globalVariables();
     }
 
     settings() {
@@ -57,6 +58,13 @@ export class App {
         this.app.use(passport.initialize());
         this.app.use(passport.session());
         this.app.use(flash());
+        const storage: any = multer.diskStorage({
+            destination: path.join(__dirname, 'upload'),
+            filename: (req, file, cb) => {
+                cb(null, new Date().getTime() + path.extname(file.originalname));
+            }
+        })
+        this.app.use(multer({ storage }).single('image'));
     }
 
     routes() {
@@ -67,7 +75,7 @@ export class App {
 
     globalVariables() {
         this.app.use((req, res, next) => {
-            this.app.locals.danger = req.flash('message');
+            this.app.locals.danger = req.flash('danger');
             this.app.locals.success = req.flash('success');
             this.app.locals.users = req.user;
             next();

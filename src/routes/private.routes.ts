@@ -1,9 +1,17 @@
 import { Router } from 'express';
 
-import profileCtr from '../controllers/profile.controller'
+import profileCtr from '../controllers/private.controller'
+
+import auth from '../middleware/auth';
 
 const router = Router();
 
-router.get('/profile', profileCtr.getProfile);
+router.get('/profile', auth.isLoggedIn, profileCtr.getProfile);
+
+router.get('/add', auth.isLoggedIn, profileCtr.addInformationProfile);
+
+router.post('/add', auth.isLoggedIn, profileCtr.sendInformation);
+
+router.get('/calendar', auth.isLoggedIn, profileCtr.getCalendar);
 
 export default router;

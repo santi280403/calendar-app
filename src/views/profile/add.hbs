@@ -1,0 +1,29 @@
+<div class="add-photo" id="form-photo">
+    <div class="box-photo">
+        <div class="img" id="prev-img">
+            <img src="/img/no-image.png" id="prev">
+        </div>
+        <div class="form-photo">
+            <div class="form-heading">
+                <h3>Add Personal Information</h3>
+            </div>
+            <form enctype="multipart/form-data" method="POST" action="/add">
+                <div class="div-group">
+                    <input type="text" name="firstname" required>
+                    <label>First Name</label>
+                </div>
+                <div class="div-group">
+                    <input type="text" name="lastname" required>
+                    <label>Last Name</label>
+                </div>
+                <div class="div-file">
+                    <p class="add-file">Add File</p>
+                    <input type="file" name="image" class="btn-file" id="inputFile">
+                </div>
+                <button class="btn btn-send">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

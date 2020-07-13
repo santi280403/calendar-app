@@ -1,0 +1,88 @@
+.wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    min-height: 85vh;
+}
+
+.calendar{
+    margin: auto;
+    width: 600px;
+    background-color: #fff;
+    box-shadow: 0 0 15px 3px rgba(0,0,0,.5);
+}
+
+.month{
+    display: flex;
+    max-width: 100%;
+    background-color: #2cec71;
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.month h2{
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.prev, .next{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    font-size: 23px;
+    height: 50px;
+    background-color: rgba(0,0,0,.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.weekends {
+    display: flex;
+    max-width: 100%;
+    background-color: #27ae60;
+    color: #fff;
+    padding: 7px 0;
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: 300;
+    padding: 10px 0;
+}
+
+.days div {
+    margin-bottom: 10px;
+    padding: 10px 0;
+    transition: all .5s;
+}
+
+.weekends div, .days div {
+    width: 14.28%;
+    text-align: center;
+}
+
+.days div:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.today {
+    background-color: #27ae60 !important;
+    color: #fff;
+}
+
+.prev_date {
+    color: #555;
+}
