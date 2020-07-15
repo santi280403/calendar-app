@@ -7,6 +7,7 @@ import flash from 'connect-flash';
 import session from 'express-session';
 const MySQLStore = require('express-mysql-session')(session)
 import multer from 'multer';
+import cors from 'cors';
 
 //keys
 import keys from './config/keys';
@@ -46,6 +47,7 @@ export class App {
     }
 
     middlewares() {
+        this.app.use(cors());
         this.app.use(morgan('dev'));
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));

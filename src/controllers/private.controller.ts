@@ -6,6 +6,7 @@ import pool from '../database';
 
 import { Info } from '../interface/info_personal';
 
+
 cloudinary.v2.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
@@ -56,6 +57,20 @@ class Profile {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    async editInfo (req: Request, res: Response) {
+        
+        
+        const { firstname, lastname } = req.body;
+
+        console.log(firstname, lastname)
+
+        
+        await pool.query('UPDATE information_personal SET firstname = ?, lastname = ?', [firstname, lastname])
+        
+
+        res.json(req.body);
     }
 
     async getCalendar(req: Request, res: Response) {

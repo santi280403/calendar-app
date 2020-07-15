@@ -1,3 +1,29 @@
-<a href="/add">
-    add
-</a>
+<div class="conatiner-profile">
+    <div class="pos-left">
+        <div class="img-sec">
+            <img src={{result.imageURL}} alt="">
+        </div>
+        <div class="buttons-sec">
+            <button class="btn-pass" id="Cpass">Change Password</button>
+            <button class="btn-email" id="Cemail">Change Email</button>
+            <button class="btn-per" id="Cinfo">Edit Personal Information</button>
+        </div>
+    </div>
+    <div class="pos-center">
+        <div class="card">
+            <div class="card-header">
+                <h1>Personal Information</h1>
+            </div>
+            <div class="card-body">
+                <div class="group-card">
+                    Firstname: <h3 id="firstname">{{result.firstname}}</h3>
+                </div>
+                <div class="group-card">
+                    Lastname: <h3 id="lastname">{{result.lastname}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal"></div>

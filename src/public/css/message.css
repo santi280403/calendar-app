@@ -29,6 +29,7 @@
 .alert .msg {
     color: #2d9e00;
     font-size: 18px;
+    margin-right: 15px;
     padding: 0 20px;
 }
 

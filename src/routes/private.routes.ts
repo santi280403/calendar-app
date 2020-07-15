@@ -12,6 +12,8 @@ router.get('/add', auth.isLoggedIn, profileCtr.addInformationProfile);
 
 router.post('/add', auth.isLoggedIn, profileCtr.sendInformation);
 
+router.post('/edit_info', auth.isLoggedIn, profileCtr.editInfo);
+
 router.get('/calendar', auth.isLoggedIn, profileCtr.getCalendar);
 
 export default router;

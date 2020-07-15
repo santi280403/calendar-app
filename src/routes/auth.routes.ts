@@ -4,7 +4,10 @@ import passport from 'passport';
 
 import auth from '../middleware/auth';
 
+//controller passport
 import authCtr from '../controllers/auth.controller';
+
+
 
 const router = Router();
 
@@ -19,13 +22,16 @@ router.post('/signup',auth.isNotLoggedIn,  passport.authenticate('signup', {
     failureFlash: true
 }));
 
+//Login
 router.post('/login',auth.isNotLoggedIn,  (req, res, next) => {
     passport.authenticate('login', {
         successRedirect: '/profile',
         failureRedirect: '/login',
         failureFlash: true
     })(req, res, next);
-})
+});
+
+router.post('/edit_pass', auth.isLoggedIn, authCtr.editPassword);
 
 
 /*router.get('/google',

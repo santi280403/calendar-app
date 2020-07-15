@@ -2,6 +2,8 @@
 import sideNav from './sidenav.js';
 //image change
 import imgage from './change-imgage.js';
+//ajaxProfil
+import profile from './ajax-profile.js';
 
 window.addEventListener('load', () => {
     const container = document.querySelector('.container-loader');
@@ -14,8 +16,12 @@ window.addEventListener('load', () => {
 function main() {
     new sideNav();
     new imgage();
-    rederDate();
+    //rederDate();
 }
+
+const passChange = new profile({ id: 'Cpass', modal: 'modal' });
+const emailChange = new profile({ id: 'Cemail', modal: 'modal' });
+const infoChange = new profile({ id: 'Cinfo', modal: 'modal' });
 
 //calendar
 const date_str = document.getElementById('date_str');
