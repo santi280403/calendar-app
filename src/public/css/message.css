@@ -30,7 +30,10 @@
     color: #2d9e00;
     font-size: 18px;
     margin-right: 15px;
-    padding: 0 20px;
+}
+
+.alert .msg span{
+    left: 30%;
 }
 
 .alert .close-alert {
@@ -85,6 +88,7 @@
     }
     100% {
         transform: translateX(100%);
+        visibility: hidden;
     }
 }
 

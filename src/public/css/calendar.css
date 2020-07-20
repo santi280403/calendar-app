@@ -14,7 +14,7 @@
     box-shadow: 0 0 15px 3px rgba(0,0,0,.5);
 }
 
-.month{
+.calendar .month{
     display: flex;
     max-width: 100%;
     background-color: #2cec71;
@@ -25,12 +25,12 @@
     padding: 40px 30px;
 }
 
-.month h2{
+.calendar .month h2{
     font-size: 50px;
     font-weight: 500;
 }
 
-.prev, .next{
+.calendar .prev, .next{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,11 +43,11 @@
     transition: all .5s;
 }
 
-.prev:hover, .next:hover {
+.calendar .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, .6);
 }
 
-.weekends {
+.calendar .weekends {
     display: flex;
     max-width: 100%;
     background-color: #27ae60;
@@ -55,34 +55,170 @@
     padding: 7px 0;
 }
 
-.days {
+.calendar .days {
     display: flex;
     flex-wrap: wrap;
     font-weight: 300;
     padding: 10px 0;
 }
 
-.days div {
+.calendar .days div {
     margin-bottom: 10px;
     padding: 10px 0;
     transition: all .5s;
 }
 
-.weekends div, .days div {
+.calendar .weekends div, .days div {
     width: 14.28%;
     text-align: center;
 }
 
-.days div:hover {
+.calendar .days div:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, .3);
 }
 
-.today {
+.calendar .today {
     background-color: #27ae60 !important;
     color: #fff;
 }
 
-.prev_date {
+.calendar .prev_date {
     color: #555;
+}
+
+/*modal to add a new date note*/
+.container-modal{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -100px;
+    width: 100%;
+    height: 100vh;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.container-modal .bg{
+    position: fixed;
+    background: rgba(0, 0, 0, .3);
+    top: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.container-modal.show{
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+}
+
+.modal-calendar{
+    width: 500px;
+    background-color: #fff;
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 8px;
+    top: -100px;
+    box-shadow: 3px 3px 15px 3px rgba(0,0,0,.5);
+    z-index: 100;
+}
+
+.modal-calendar .modal-header{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #27ae60;
+}
+
+.modal-calendar .modal-header h1{
+    text-transform: uppercase;
+    font-weight: 200;
+    color: #2cec71;
+}
+
+.modal-calendar .modal-body{
+    width: 100%;
+    margin: 20px 0 ;
+}
+
+.modal-calendar .modal-body .modal-group{
+    margin: 10px 0;
+    padding: 5px;
+    display: flex;
+}
+
+.modal-calendar .modal-body .modal-group input[type="text"],
+.modal-calendar .modal-body .modal-group textarea{
+    width: 100%;
+    padding: 6px;
+    border: none;
+    font-size: 15px;
+    background: transparent;
+    border-bottom: 1px solid #555;
+    outline: none;
+    color: #8d8d8d;
+    transition: color .3s, border-bottom .4s;
+    resize: vertical;
+}
+
+.modal-calendar .modal-body .modal-group #colorValue{
+    width: 80%;
+    border-bottom: 1px solid #24c760;
+}
+
+input[type="color"]{
+    width: 20%;
+    height: 30px;
+    border-bottom: 1px solid #555;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+.modal-calendar .modal-body .modal-group input:focus,
+.modal-calendar .modal-body .modal-group textarea:focus{
+    color: #555;
+    border-bottom: 1px solid #24c760;
+}
+
+.modal-calendar .modal-footer{
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.modal-calendar .modal-footer button{
+    padding: 10px 30px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.modal-calendar .modal-footer .btn-send-calendar{
+    background: #2cec71;
+    color: #fff;
+    transition: all .5s;
+}
+
+.modal-calendar .modal-footer .btn-cancel-calendar{
+    background: #f84a4a;
+    color: #fff;
+    transition: all .5s;
+}
+.modal-calendar .modal-footer .btn-send-calendar:hover{
+    background: #07c04b;
+    color: #fff;
+}
+
+.modal-calendar .modal-footer .btn-cancel-calendar:hover{
+    background: #d44242;
+    color: #fff;
 }

@@ -15,6 +15,7 @@ cloudinary.v2.config({
 
 class Profile {
 
+    //get profile
     async getProfile(req: Request, res: Response) {
         let { id } :any = req.user;
         let user = req.user;
@@ -27,6 +28,7 @@ class Profile {
         })
     }
 
+    //get add information
     addInformationProfile(req: Request, res: Response) {
         let user = req.user;
         res.render('profile/add', {
@@ -35,6 +37,7 @@ class Profile {
         });
     }
 
+    //send information (POST)
     async sendInformation(req: Request, res: Response) {
         console.log(req.body);
         const { id }: any = req.user;
@@ -59,12 +62,11 @@ class Profile {
         }
     }
 
+    //edit information (POST)
     async editInfo (req: Request, res: Response) {
         
         
         const { firstname, lastname } = req.body;
-
-        console.log(firstname, lastname)
 
         
         await pool.query('UPDATE information_personal SET firstname = ?, lastname = ?', [firstname, lastname])
@@ -73,6 +75,7 @@ class Profile {
         res.json(req.body);
     }
 
+    //get calendatr (GET)
     async getCalendar(req: Request, res: Response) {
         let { id } :any = req.user;
         let user = req.user;
@@ -83,6 +86,21 @@ class Profile {
             user,
             result
         })
+    }
+
+    //edit img(POST)
+    async editImg (req: Request, res: Response) {
+
+        console.log(req.file);
+
+        const result = await cloudinary.v2.uploader.upload(req.file.path);
+
+        const img = result.url;
+
+        await pool.query('UPDATE information_personal SET imageURL = ?', [img]);
+
+        res.render('/profile');
+
     }
 
 }

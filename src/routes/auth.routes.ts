@@ -31,7 +31,11 @@ router.post('/login',auth.isNotLoggedIn,  (req, res, next) => {
     })(req, res, next);
 });
 
+//edit password
 router.post('/edit_pass', auth.isLoggedIn, authCtr.editPassword);
+
+//edit email
+router.post('/edit_email', auth.isLoggedIn, authCtr.editEmail);
 
 
 /*router.get('/google',

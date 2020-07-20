@@ -3,6 +3,8 @@ const lastnameField = document.getElementById('lastname');
 
 export default class ProfileAjax {
 
+
+    //modal to information, password and email
     modalPass = `
                 <div class="modal">
                     <div class="modal-header">
@@ -18,15 +20,36 @@ export default class ProfileAjax {
                 </div>
             `
 
+    //modal to img
+    modalImg = `<div class="box">
+        <div class="img">
+            <img src="/img/no-image.png" id="prev" class="prevImg"/>
+        </div>    
+        <div class="form-img">
+            <div class="form-heading">
+                <h1>Change Image</h1>
+            </div>
+            <form enctype="multipart/form-data" method="POST" class="form-data" action="/edit_img">
+                <div class="div-file">
+                    <p class="add-file">Add File</p>
+                    <input type="file" name="image" class="btn-file" id="inputFile">
+                </div>
+                <button class="btn-save">Save</button>
+                <button class="btn-cancel">Cancel</button>
+            </form>
+        </div>
+    
+    </div>`
+
     constructor(options) {
         this.id = options.id;
-        this.modalID = options.modal;
         this.element = document.getElementById(this.id);
 
         this.element.addEventListener('click', (e) => {
+            //to password
             if (e.target.id == 'Cpass') {
 
-                this.addModalPassword();
+                this.addModal();
                 this.addEventsPass();
                 this.addAttribute('type', 'password');
                 this.addAttribute('placeholder', 'New Password');
@@ -35,33 +58,44 @@ export default class ProfileAjax {
                 this.sendPassword();
             }
 
+            //to email
             if (e.target.id == 'Cemail') {
 
-                this.addModalPassword();
+                this.addModal();
                 this.addEventsPass();
                 this.addAttribute('type', 'email');
                 this.addAttribute('placeholder', 'New Email');
                 this.addTitle('Change Email');
 
-                this.addEventsPass('http://localhost:3100/edit_email');
+                this.sendEmail();
             }
 
+            //to information
             if (e.target.id == 'Cinfo') {
 
 
-                this.addModalPassword();
+                this.addModal();
+                this.addEventsPass();
                 this.addAttribute('type', 'text');
                 this.addAttribute('placeholder', 'New Firstname');
                 this.addInput();
                 this.addTitle('Change Info');
                 this.sendInfo();
+
+            }
+
+            //to img
+            if (e.target.id == 'img') {
+                this.addModalImg();
+                this.eventToImg();
             }
 
         })
 
     }
 
-    addModalPassword() {
+    //add modal to email, password or information
+    addModal() {
         this.cCondatiner = document.createElement('div');
         this.cCondatiner.classList.add('modal-container');
         this.cCondatiner.classList.add('active');
@@ -82,6 +116,24 @@ export default class ProfileAjax {
         this.btnCancelPass = this.modalArea.getElementsByClassName('btn-cancel')[0];
     }
 
+    //add modal to img
+    addModalImg() {
+        this.containerImg = document.createElement('div')
+        this.containerImg.classList.add('conatiner-box')
+        document.getElementById('modal').appendChild(this.containerImg);
+
+        this.containerImg.innerHTML = this.modalImg;
+
+        this.boxArea = this.containerImg.getElementsByClassName('box')[0];
+
+        this.inputFile = this.boxArea.getElementsByClassName('btn-file')[0];
+        this.imgPrev = this.boxArea.getElementsByClassName('prevImg')[0];
+
+        this.form = this.boxArea.getElementsByClassName('form-data')[0];
+        this.btnCancelImg = this.boxArea.getElementsByClassName('btn-cancel')[0];
+    }
+
+    //add input to info 
     addInput() {
         this.input_two = document.createElement('input');
         this.input_two.classList.add('input');
@@ -90,20 +142,44 @@ export default class ProfileAjax {
         this.modalBody.appendChild(this.input_two);
     }
 
+    //add event to modal email, password or info
     addEventsPass() {
         this.btnCancelPass.addEventListener('click', e => {
             this.cCondatiner.classList.remove('active');
         })
     }
 
+
+    //event to img
+    eventToImg() {
+        this.btnCancelImg.addEventListener('click', () => {
+            this.containerImg.remove();
+        })
+
+        this.inputFile.addEventListener('change', () => {
+
+            if (this.inputFile.files && this.inputFile.files[0]) {
+                var reader = new FileReader();
+                reader.onload = (e) => {
+                    this.imgPrev.src = e.target.result;
+                    //prevImg.appendChild(prev);
+                }
+                reader.readAsDataURL(this.inputFile.files[0]);
+            }
+        })
+    }
+
+    //set attribute to inputs
     addAttribute(attribute, value) {
         this.input.setAttribute(attribute, value);
     }
 
+    //add title to modal
     addTitle(title) {
         this.title.innerHTML = title;
     }
 
+    //send password ajax
     sendPassword() {
         this.btnSavePass.addEventListener('click', () => {
             const data = {
@@ -124,6 +200,28 @@ export default class ProfileAjax {
         })
     }
 
+    //send email ajax
+    sendEmail() {
+        this.btnSavePass.addEventListener('click', () => {
+            const data = {
+                valueIn: this.input.value,
+            }
+            fetch('http://localhost:3100/edit_email', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-type': 'application/json' }
+            })
+                .then(res => res.text())
+                .then(data => {
+                    console.log(data)
+                    alert(data);
+                    this.cCondatiner.classList.remove('active');
+                })
+            //console.log(method, URI, data)
+        })
+    }
+
+    //send info ajax
     sendInfo() {
         this.btnSavePass.addEventListener('click', () => {
             const data = {

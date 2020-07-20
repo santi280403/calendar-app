@@ -28,6 +28,16 @@ class AuthRoutes {
 
     }
 
+    async editEmail(req: Request, res: Response) {
+
+        const { valueIn } = req.body;
+
+        await pool.query('UPDATE users SET email = ?', [valueIn]);
+
+        res.send('Email Updated Successfully');
+
+    }
+
 }
 
 const auth = new AuthRoutes();

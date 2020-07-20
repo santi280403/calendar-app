@@ -161,6 +161,7 @@ input:focus~label, input:valid~label {
 }
 
 .pos-left .img-sec img{
+    width: 100%;
     cursor: pointer;
 }
 
@@ -246,7 +247,7 @@ input:focus~label, input:valid~label {
 
 /*modal*/
 .modal-container{
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -271,6 +272,7 @@ input:focus~label, input:valid~label {
     border-radius: 8px;
     padding: 30px;
     top: -100%;
+    display: flex;
     transition: top .5s;
 }
 
@@ -278,25 +280,25 @@ input:focus~label, input:valid~label {
     top: 0;
 }
 
-.modal-header{
+.modal .modal-header{
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #444;
 }
 
-.modal-header h1{
+.modal .modal-header h1{
     text-transform: uppercase;
     font-weight: 200;
     color: #444;
     margin-bottom: 10px;
 }
 
-.modal-body{
+.modal .modal-body{
     width: 100%;
     margin: 20px 0;
 }
 
-.modal-body input{
+.modal .modal-body input{
     width: 100%;
     background: transparent;
     border: none;
@@ -308,16 +310,16 @@ input:focus~label, input:valid~label {
     transition: border-bottom .5s;
 }
 
-.modal-body input:focus{
+.modal .modal-body input:focus{
     color: rgb(71,71,71);
     border-bottom: 1px solid #238bcc;
 }
 
-.modal-footer{
+.modal .modal-footer{
     width: 100%;
 }
 
-.modal-footer button{
+.modal .modal-footer button{
     text-transform: uppercase;
     border: none;
     background: transparent;
@@ -326,10 +328,119 @@ input:focus~label, input:valid~label {
     margin: 0 10px;
 }
 
-.modal-footer .btn-save{
+.btn-save{
     color: #1a71a9;
 }
 
-.modal-footer .btn-cancel{
+.btn-cancel{
     color: #f84a4a;
+}
+
+.conatiner-box {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.box{
+    background: #fff;
+    border-radius: 8px;
+    flex-basis: 850px;
+    max-width: 850px;
+    display: flex;
+    padding: 40px;
+}
+
+.box .img{
+    flex-basis: 50%;
+    max-width: 50%;
+}
+
+.box .img img{
+    display: block;
+    width: 100%;
+}
+
+.box .form-img{
+    flex-basis: 50%;
+    max-width: 50%;
+    padding-left: 30px;
+}
+
+.box .form-heading{
+    width: 100%;
+    border-bottom: 1px solid #444;
+}
+
+.box .form-heading h1{
+    text-transform: uppercase;
+    font-weight: 200;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.box .form-img form {
+    width: 100%;
+}
+
+.box .form-img form p.add-file{
+    color: #fff;
+    text-align: center;
+}
+
+.box .form-img form .div-file{
+    display: block;
+    position: relative;
+    padding: 10px;
+    width: 150px;
+    background-color: #2499e3;
+    margin: 25px;
+    border-radius: 7px;
+    box-shadow: 0 3px 0 #1a71a9;
+    transition: background-color .5s ease;
+}
+
+.box .form-img form input.btn-file{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.box .form-img button{
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 0 10px;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .conatiner-profile{
+        flex-direction: column;
+        width: 100%;
+    }
+    .pos-left{
+        width: 100%;
+    }
+    .pos-center {
+        margin: 50px 0;
+        width: 100%;
+    }
+    .pos-left .img-sec img{
+        width: 100%;
+    }
 }
